@@ -1,6 +1,291 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosaukums</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        custom: {
+                            'background-light': '#f4f7f6',
+                            'background-dark': '#121c21',
+                            'primary': '#2c7da0',
+                            'secondary': '#468faf',
+                            'accent': '#61a5c2',
+                            'text-light': '#1f2937',
+                            'text-dark': '#e5e7eb',
+                            'highlight': '#89c2d9'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Manrope', 'ui-sans-serif', 'system-ui']
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'subtle-bounce': 'subtleBounce 3s infinite'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        subtleBounce: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Manrope', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .mode-transition {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .scrolldown-animation {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-custom-background-light dark:bg-custom-background-dark text-custom-text-light dark:text-custom-text-dark mode-transition">
+    <div x-data="{ 
+        darkMode: false, 
+        activeSection: 1,
+        mobileMenuOpen: false 
+    }" x-init="
+        darkMode = localStorage.getItem('darkMode') === 'true';
+        document.documentElement.classList.toggle('dark', darkMode);
+    ">
+        <nav class="fixed top-0 left-0 w-full bg-white/80 dark:bg-custom-background-dark/90 backdrop-blur-md z-50 shadow-sm mode-transition">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-2xl font-bold text-custom-primary dark:text-custom-accent animate-pulse">
+                        Nosaukums
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#section1" 
+                       :class="activeSection === 1 ? 'text-custom-primary font-bold' : 'text-gray-600'"
+                       @click="activeSection = 1"
+                       class="transition hover:text-custom-primary hover:scale-105 transform">
+                        1. sadaļa
+                    </a>
+                    <a href="#section2" 
+                       :class="activeSection === 2 ? 'text-custom-primary font-bold' : 'text-gray-600'"
+                       @click="activeSection = 2"
+                       class="transition hover:text-custom-primary hover:scale-105 transform">
+                        2. sadaļa
+                    </a>
+                    <a href="#section3" 
+                       :class="activeSection === 3 ? 'text-custom-primary font-bold' : 'text-gray-600'"
+                       @click="activeSection = 3"
+                       class="transition hover:text-custom-primary hover:scale-105 transform">
+                        3. sadaļa
+                    </a>
+                    <a href="#section4" 
+                       :class="activeSection === 4 ? 'text-custom-primary font-bold' : 'text-gray-600'"
+                       @click="activeSection = 4"
+                       class="transition hover:text-custom-primary hover:scale-105 transform">
+                        4. sadaļa
+                    </a>
+                    <a href="#section5" 
+                       :class="activeSection === 4 ? 'text-custom-primary font-bold' : 'text-gray-600'"
+                       @click="activeSection = 4"
+                       class="transition hover:text-custom-primary hover:scale-105 transform">
+                        5. sadaļa
+                    </a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button @click="
+                        darkMode = !darkMode;
+                        localStorage.setItem('darkMode', darkMode);
+                        document.documentElement.classList.toggle('dark', darkMode);
+                    " class="text-custom-primary dark:text-custom-highlight hover:opacity-80 mode-transition">
+                        <svg x-show="!darkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                        <svg x-show="darkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m3.343-5.657L5.636 5.636m12.728 12.728L18.364 18.364M12 7a5 5 0 110 10 5 5 0 010-10z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <header class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('hero2.jpg')">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/70 dark:to-custom-background-dark/70 z-10"></div>
+            <div class="relative z-20 max-w-4xl mx-auto px-4">
+                <h1 class="text-6xl md:text-7xl font-bold text-custom-primary dark:text-custom-accent mb-6 animate-fade-in-up">
+                    Nosaukums
+                </h1>
+                <p class="text-2xl md:text-3xl text-custom-text-light dark:text-custom-text-dark mb-10 animate-fade-in-up">
+                    Patrīcija Vīns
+                </p>
+            </div>
+            <a href="#section1" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30">
+                <div class="scrolldown-animation">
+                    <svg class="w-10 h-10 text-custom-primary dark:text-custom-accent animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </a>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+            <section id="section1" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
+                <div class="order-2 md:order-1 space-y-6">
+                    <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
+                        1. sadaļa
+                        <span class="absolute -top-2 -right-2 text-6xl opacity-10 text-custom-primary">01</span>
+                    </h2>
+                    <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
+                            teksts teksts teksts teksts
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-2 bg-custom-primary rounded-full"></div>
+                        <p class="text-custom-text-light dark:text-custom-text-dark italic">
+                            teksts teksts teksts teksts
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative group">
+                        <img src="attels.jpg" alt="1. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                        <div class="absolute inset-0 bg-custom-primary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="section2" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
+                <div class="relative group">
+                    <img src="attels.jpg" alt="2. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-custom-accent opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
+                        2. sadaļa
+                        <span class="absolute -top-2 -right-1 text-6xl opacity-10 text-custom-primary">02</span>
+                    </h2>
+                    <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
+                        teksts teksts teksts teksts
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <div class="w-2 bg-custom-accent rounded-full"></div>
+                        <p class="text-custom-text-light dark:text-custom-text-dark italic">
+                            teksts teksts teksts teksts
+                        </p>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="section3" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
+                <div class="order-2 md:order-1 space-y-6">
+                    <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
+                        3. sadaļa
+                        <span class="absolute -top-2 -right-2 text-6xl opacity-10 text-custom-primary">03</span>
+                    </h2>
+                    <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
+                        teksts teksts teksts teksts
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-2 bg-custom-secondary rounded-full"></div>
+                        <p class="text-custom-text-light dark:text-custom-text-dark italic">
+                            teksts teksts teksts teksts
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative group">
+                        <img src="attels.jpg" alt="3. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                        <div class="absolute inset-0 bg-custom-secondary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="section4" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
+                <div class="relative group">
+                    <img src="attels.jpg" alt="4. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                    <div class="absolute inset-0 bg-custom-accent opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
+                        4. sadaļa
+                        <span class="absolute -top-2 -right-1 text-6xl opacity-10 text-custom-primary">04</span>
+                    </h2>
+                    <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
+                        teksts teksts teksts teksts
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <div class="w-2 bg-custom-accent rounded-full"></div>
+                        <p class="text-custom-text-light dark:text-custom-text-dark italic">
+                            teksts teksts teksts teksts
+                        </p>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="section5" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
+                <div class="order-2 md:order-1 space-y-6">
+                    <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
+                        5. sadaļa
+                        <span class="absolute -top-2 -right-2 text-6xl opacity-10 text-custom-primary">05</span>
+                    </h2>
+                    <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
+                        teksts teksts teksts teksts
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-2 bg-custom-secondary rounded-full"></div>
+                        <p class="text-custom-text-light dark:text-custom-text-dark italic">
+                            teksts teksts teksts teksts
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative group">
+                        <img src="attels.jpg" alt="5. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                        <div class="absolute inset-0 bg-custom-secondary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+
+
+        <footer class="bg-gradient-to-r from-custom-primary/10 to-custom-accent/10 py-8 mode-transition relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-custom-primary dark:text-custom-accent mode-transition mb-4">
+                    © 2025 Visas tiesības aizsargātas
+                </p>
+                
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
