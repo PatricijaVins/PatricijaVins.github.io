@@ -9,17 +9,20 @@
         tailwind.config = {
             darkMode: 'class',
             theme: {
-                extend: {
+               extend: {
                     colors: {
                         custom: {
-                            'background-light': '#f4f7f6',
-                            'background-dark': '#121c21',
-                            'primary': '#2c7da0',
-                            'secondary': '#468faf',
-                            'accent': '#61a5c2',
-                            'text-light': '#1f2937',
-                            'text-dark': '#e5e7eb',
-                            'highlight': '#89c2d9'
+                            'background-light': '#f6f8f9',
+                            'background-dark': '#060809',
+                            'primary': '#29646a',
+                            'secondary': '#a3ced2',
+                            'accent': '#75c1c7',
+                            'text-light': '#101313',
+                            'text-dark': '#ecefef',
+                            'highlight': '#95cfd6',
+                            'surface-light': '#ecefef',
+                            'surface-dark': '#2d585c',
+                            'muted': '#38848a'
                         }
                     },
                     fontFamily: {
@@ -65,7 +68,14 @@
             60% {
                 transform: translateY(-10px);
             }
+
+            
         }
+         .nav-link.active {
+        color: #29646a; /* Tailwind "blue-700" */
+        font-weight: 700; /* bold */
+    }
+    
     </style>
 </head>
 <body class="bg-custom-background-light dark:bg-custom-background-dark text-custom-text-light dark:text-custom-text-dark mode-transition">
@@ -77,66 +87,100 @@
         darkMode = localStorage.getItem('darkMode') === 'true';
         document.documentElement.classList.toggle('dark', darkMode);
     ">
-        <nav class="fixed top-0 left-0 w-full bg-white/80 dark:bg-custom-background-dark/90 backdrop-blur-md z-50 shadow-sm mode-transition">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <a href="#" class="text-2xl font-bold text-custom-primary dark:text-custom-accent animate-pulse">
-                        Digitālais ceļš uz LU
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex space-x-6">
-                    <a href="#section1" 
-                       :class="activeSection === 1 ? 'text-custom-primary font-bold' : 'text-gray-600'"
-                       @click="activeSection = 1"
-                       class="transition hover:text-custom-primary hover:scale-105 transform">
-                        1. sadaļa
-                    </a>
-                    <a href="#section2" 
-                       :class="activeSection === 2 ? 'text-custom-primary font-bold' : 'text-gray-600'"
-                       @click="activeSection = 2"
-                       class="transition hover:text-custom-primary hover:scale-105 transform">
-                        2. sadaļa
-                    </a>
-                    <a href="#section3" 
-                       :class="activeSection === 3 ? 'text-custom-primary font-bold' : 'text-gray-600'"
-                       @click="activeSection = 3"
-                       class="transition hover:text-custom-primary hover:scale-105 transform">
-                        3. sadaļa
-                    </a>
-                    <a href="#section4" 
-                       :class="activeSection === 4 ? 'text-custom-primary font-bold' : 'text-gray-600'"
-                       @click="activeSection = 4"
-                       class="transition hover:text-custom-primary hover:scale-105 transform">
-                        4. sadaļa
-                    </a>
-                    <a href="#section5" 
-                       :class="activeSection === 5 ? 'text-custom-primary font-bold' : 'text-gray-600'"
-                       @click="activeSection = 5"
-                       class="transition hover:text-custom-primary hover:scale-105 transform">
-                        5. sadaļa
-                    </a>
-                </div>
-
-                <div class="flex items-center space-x-4">
-                    <button @click="
-                        darkMode = !darkMode;
-                        localStorage.setItem('darkMode', darkMode);
-                        document.documentElement.classList.toggle('dark', darkMode);
-                    " class="text-custom-primary dark:text-custom-highlight hover:opacity-80 mode-transition">
-                        <svg x-show="!darkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                        </svg>
-                        <svg x-show="darkMode" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m3.343-5.657L5.636 5.636m12.728 12.728L18.364 18.364M12 7a5 5 0 110 10 5 5 0 010-10z"></path>
-                        </svg>
-                    </button>
-                </div>
+<nav class="sticky top-0 z-50 glass-effect transition-all duration-300 backdrop-blur-md bg-white/70 dark:bg-custom-background-dark/70 border-b border-stone-200 dark:border-stone-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                                   <a href="#" class="text-xl font-bold text-custom-primary dark:text-custom-accent animate-pulse">
+                                    Digitālais ceļš uz LU</a>
             </div>
-        </nav>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+               <a href="#section1" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Plānošana</a>
+               <a href="#section2" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Transports</a>
+               <a href="#section3" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Alternatīvas</a>
+               <a href="#section4" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Laiks</a>
+               <a href="#section5" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Organizācija</a>
+            </div>
 
-        <header class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('hero2.jpg')">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/70 dark:to-custom-background-dark/70 z-10"></div>
+            <!-- Mobile and Desktop Right Side -->
+            <div class="flex items-center space-x-2">
+                <!-- Theme Toggle -->
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+                    aria-label="Toggle theme"
+                >
+                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button 
+                    @click="mobileMenuOpen = !mobileMenuOpen"
+                    class="md:hidden p-2 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+                    aria-label="Toggle mobile menu"
+                >
+                    <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 transform -translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 transform translate-y-0"
+             x-transition:leave-end="opacity-0 transform -translate-y-2"
+             class="md:hidden border-t border-stone-200 dark:border-stone-700 bg-white/95 dark:bg-custom-background-dark/95 backdrop-blur-lg">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#section1" 
+                   @click="mobileMenuOpen = false"
+                   class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-blue-600 transition-colors py-2">
+                   Plānošana
+                </a>
+                <a href="#section2" 
+                   @click="mobileMenuOpen = false"
+                   class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-blue-600 transition-colors py-2">
+                   Transports
+                </a>
+                <a href="#section3" 
+                   @click="mobileMenuOpen = false"
+                   class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-blue-600 transition-colors py-2">
+                   Alternatīvas
+                </a>
+                <a href="#section4" 
+                   @click="mobileMenuOpen = false"
+                   class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-blue-600 transition-colors py-2">
+                   Laiks
+                </a>
+                <a href="#section5" 
+                   @click="mobileMenuOpen = false"
+                   class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-blue-600 transition-colors py-2">
+                   Organizācija
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+       <header 
+    class="relative h-screen flex items-center justify-center text-center bg-cover bg-center 
+           bg-[url('drawing1.png')] dark:bg-[url('dark1.png')]">
+
+            <div class="absolute inset-0"></div>
             <div class="relative z-20 max-w-4xl mx-auto px-4">
                 <h1 class="text-6xl md:text-7xl font-bold text-custom-primary dark:text-custom-accent mb-6 animate-fade-in-up">
                     Digitālā pieredze ceļā no dzīvesvietas līdz LU
@@ -158,7 +202,7 @@
             <section id="section1" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
                 <div class="order-2 md:order-1 space-y-6">
                     <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                       1. Maršruta plānošana ar Google Maps
+                       Maršruta plānošana ar Google Maps
                         <span class="absolute -top-2 -right-2 text-6xl opacity-10 text-custom-primary">01</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
@@ -176,7 +220,7 @@
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="relative group">
-                        <img src="attels.jpg" alt="1. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+<img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="1. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                         <div class="absolute inset-0 bg-custom-primary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                     </div>
                 </div>
@@ -184,12 +228,12 @@
     
             <section id="section2" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
                 <div class="relative group">
-                    <img src="attels.jpg" alt="2. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1617152683514-08cd8b3da14f?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="2. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-custom-accent opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                 </div>
                 <div>
                     <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                        2. Rīgas satiksmes lietotne
+                        Rīgas satiksmes lietotne
                         <span class="absolute -top-2 -right-1 text-6xl opacity-10 text-custom-primary">02</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
@@ -210,7 +254,7 @@
             <section id="section3" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
                 <div class="order-2 md:order-1 space-y-6">
                     <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                        3. Bolt kā alternatīvs risinājums
+                        Bolt kā alternatīvs risinājums
                         <span class="absolute -top-2 -right-2 text-6xl opacity-10 text-custom-primary">03</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
@@ -227,7 +271,7 @@
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="relative group">
-                        <img src="attels.jpg" alt="3. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1482029255085-35a4a48b7084?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="3. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                         <div class="absolute inset-0 bg-custom-secondary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                     </div>
                 </div>
@@ -235,12 +279,12 @@
     
             <section id="section4" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
                 <div class="relative group">
-                    <img src="attels.jpg" alt="4. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1534068731687-d70176c2e7d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="4. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     <div class="absolute inset-0 bg-custom-accent opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                 </div>
                 <div>
                     <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                        4. Laika prognozes aplikācijas
+                        Laika prognozes aplikācijas
                         <span class="absolute -top-2 -right-1 text-6xl opacity-10 text-custom-primary">04</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
@@ -260,7 +304,7 @@
             <section id="section5" class="grid md:grid-cols-2 gap-12 items-center scroll-mt-20">
                 <div class="order-2 md:order-1 space-y-6">
                     <h2 class="text-4xl font-bold mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                        5. Ikdienas rutīnas plānošana ar Google Calendar
+                        Laika plānošana ar Google Calendar
                         <span class="absolute -top-2 -right-2 text-6xl opacity-10 text-custom-primary">05</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-lg leading-relaxed mode-transition">
@@ -277,7 +321,7 @@
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="relative group">
-                        <img src="attels.jpg" alt="5. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1617106400392-b53e003bfc35?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="5. sadaļa" class="w-full h-96 object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                         <div class="absolute inset-0 bg-custom-secondary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                     </div>
                 </div>
@@ -286,17 +330,89 @@
 
         </main>
 
+<!-- Footer -->
+        <footer class="bg-custom-surface-light dark:bg-custom-surface-dark border-t border-stone-200 dark:border-stone-700 py-12 mt-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                    <!-- Left Side - Title -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-custom-primary dark:text-custom-accent mb-2">
+                            Digitālais ceļš uz LU
+                        </h3>
+                        <p class="text-custom-text-light dark:text-custom-text-dark text-sm opacity-70">
+                            Patrīcija Vīns • Latvijas Universitāte
+                        </p>
+                    </div>
 
+                    <!-- Center - Navigation Links -->
+                    <div class="flex flex-wrap justify-center gap-6 text-sm">
+                        <a href="#section1" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
+                            Plānošana
+                        </a>
+                        <a href="#section2" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
+                            Transports
+                        </a>
+                        <a href="#section3" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
+                            Alternatīvas
+                        </a>
+                        <a href="#section4" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
+                            Laiks
+                        </a>
+                        <a href="#section5" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
+                            Organizācija
+                        </a>
+                    </div>
 
-        <footer class="bg-gradient-to-r from-custom-primary/10 to-custom-accent/10 py-8 mode-transition relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <p class="text-custom-primary dark:text-custom-accent mode-transition mb-4">
-                    © 2025 Patrīcija Vīns. Visas tiesības aizsargātas.
-                </p>
-                
+                    <!-- Right Side - Copyright -->
+                    <div class="text-custom-text-light dark:text-custom-text-dark text-sm opacity-70">
+                        © 2025 Visas tiesības aizsargātas
+                    </div>
+                </div>
             </div>
         </footer>
+
     </div>
+<script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or default to 'light' mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    html.classList.toggle('dark', currentTheme === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function activateNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150; // pielāgo pēc vajadzības
+                if (pageYOffset >= sectionTop) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', activateNavLink);
+    });
+</script>
 
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
