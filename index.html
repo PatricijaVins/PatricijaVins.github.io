@@ -125,30 +125,25 @@
             min-width: 44px;
         }
 
-        #hero-header {
+     #hero-header {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-image: url('light-desktop.png');
+    background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80');
 }
 
-
-/* Dark mode - Desktop */
 .dark #hero-header {
-    background-image: url('dark-desktop.png');
+    background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2125&q=80');
 }
 
-/* Light mode - Mobile */
 @media (max-width: 768px) {
     #hero-header {
-        background-image: url('mobile-light.png');
+        background-attachment: scroll;
+        background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80');
     }
-}
-
-/* Dark mode - Mobile */
-@media (max-width: 768px) {
+    
     .dark #hero-header {
-        background-image: url('mobile-dark.png');
+        background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80');
     }
 }
 .fade-in {
