@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
-    <!-- Theme color for light/dark mode (fixes iOS overlay bug) -->
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121c21" media="(prefers-color-scheme: dark)">
-
+    <meta name="theme-color" content="#2c7da0">
     <title>Digitālā pieredze skolā un, izdarot studiju izvēli</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -62,14 +59,10 @@
             scroll-behavior: smooth;
             -webkit-filter: none !important;
             filter: none !important;
-                background-color: #ffffff !important;
-
         }
          html {
             -webkit-filter: none !important;
             filter: none !important;
-                background-color: #ffffff !important;
-
         }
         .mode-transition {
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -148,12 +141,7 @@
                 margin-bottom: 3rem;
             }
         }
-        @media (max-width: 768px) {
-    nav {
-        backdrop-filter: none !important;
-        background-color: #ffffff !important;
-    }
-}
+        
         /* Touch-friendly buttons */
         .touch-target {
             min-height: 44px;
@@ -162,8 +150,6 @@
 
         /* Light mode - Desktop */
         #hero-header {
-                background-color: #ffffff !important;
-
             background-image: url('light-desktop.png');
             background-size: cover;
             background-position: center;
