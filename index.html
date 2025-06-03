@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#2c7da0">
-    <title>Digitālā pieredze skolā un, izdarot studiju izvēli</title>
+    <title>Digitālā pieredze ceļā no dzīvesvietas līdz LU</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -48,9 +48,21 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap');
+        
+        * {
+            -webkit-filter: none !important;
+            filter: none !important;
+        }
+
         body {
             font-family: 'Manrope', sans-serif;
             scroll-behavior: smooth;
+            -webkit-filter: none !important;
+            filter: none !important;
+        }
+         html {
+            -webkit-filter: none !important;
+            filter: none !important;
         }
         .mode-transition {
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -89,7 +101,22 @@
 
         
         /* Mobile-specific styles */
-        @media (max-width: 768px) {
+         @media (max-width: 768px) {
+            * {
+                -webkit-filter: none !important;
+                filter: none !important;
+            }
+            
+            body {
+                -webkit-filter: none !important;
+                filter: none !important;
+            }
+            
+            html {
+                -webkit-filter: none !important;
+                filter: none !important;
+            }
+            
             .mobile-hero-title {
                 font-size: 2.5rem;
                 line-height: 1.1;
@@ -113,10 +140,6 @@
             .mobile-section-spacing {
                 margin-bottom: 3rem;
             }
-             body {
-        filter: none !important;
-        -webkit-filter: none !important;
-    }
         }
         
         /* Touch-friendly buttons */
@@ -124,29 +147,42 @@
             min-height: 44px;
             min-width: 44px;
         }
-  /* Light mode - Desktop */
-#hero-header {
-    background-image: url('light-desktop.png');
-}
 
-/* Dark mode - Desktop */
-.dark #hero-header {
-    background-image: url('dark-desktop.png');
-}
+        /* Light mode - Desktop */
+        #hero-header {
+            background-image: url('light-desktop.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-/* Light mode - Mobile */
-@media (max-width: 768px) {
-    #hero-header {
-        background-image: url('mobile-light.png');
-    }
-}
+        /* Dark mode - Desktop */
+        .dark #hero-header {
+            background-image: url('dark-desktop.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-/* Dark mode - Mobile */
-@media (max-width: 768px) {
-    .dark #hero-header {
-        background-image: url('mobile-dark.png');
-    }
-}
+  /* Light mode - Mobile */
+        @media (max-width: 768px) {
+            #hero-header {
+                background-image: url('mobile-light.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+
+        /* Dark mode - Mobile */
+        @media (max-width: 768px) {
+            .dark #hero-header {
+                background-image: url('mobile-dark.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
 .fade-in {
         opacity: 0;
         transform: translateY(30px);
@@ -159,12 +195,10 @@
     }
 
 
-
     </style>
 </head>
 
 <body class="bg-custom-background-light dark:bg-custom-background-dark text-custom-text-light dark:text-custom-text-dark mode-transition">
-    <!-- Scroll Indicator -->
 <!-- Scroll Indicator -->
 <div id="scroll-indicator" class="fixed top-0 left-0 h-1 bg-custom-primary dark:bg-custom-accent z-[9999] transition-all duration-200" style="width: 0%;"></div>
 
@@ -297,14 +331,14 @@
 <section id="section1" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                       Maršruta plānošana ar Google Maps
-<span class="hidden md:inline-block absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">01</span>
+                       Google Maps
+                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">01</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Katru dienu mans ceļš uz Latvijas Universitāti sākas ar Google Maps. Šis digitālais rīts ir kļuvis par neatņemamu manas ikdienas sastāvdaļu. Lietotne sniedz man visu nepieciešamo informāciju - no satiksmes intensitātes līdz precīziem sabiedriskā transporta maršrutiem un gaidīšanas laikiem.
                     </p>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
-                        Pateicoties reāllaika datiem, es varu izvēlēties optimālāko maršrutu un transporta veidu. Ja redzu, ka autobuss kavēsies vai būs pārpildīts, izmantoju alternatīvas iespējas - piemēram, velosipēdu vai kājām. Tas ne tikai ietaupa manu laiku, bet arī dod elastību ikdienas plānošanā.
+                        Pateicoties reāllaika datiem, es varu izvēlēties optimālāko maršrutu un transporta veidu. Ja redzu, ka autobuss kavēsies vai būs pārpildīts, izmantoju alternatīvas iespējas - piemēram, velosipēdu vai Bolt taksi. Tas ne tikai ietaupa manu laiku, bet arī dod elastību ikdienas plānošanā.
                     </p>
                     <div class="flex space-x-4">
                         <div class="w-2 bg-custom-primary rounded-full"></div>
@@ -315,7 +349,7 @@
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="relative group">
-                        <img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                        <img src="lu.jfif" 
                              alt="Google Maps navigation" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     </div>
@@ -325,14 +359,14 @@
             <!-- Section 2 -->
 <section id="section2" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
-                    <img src="https://images.unsplash.com/photo-1617152683514-08cd8b3da14f?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    <img src="rs.jfif" 
                          alt="Rīgas satiksme transport" 
                          class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                 </div>
                 <div class="space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Rīgas satiksmes lietotne
-<span class="hidden md:inline-block absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">02</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 text-4xl md:text-6xl opacity-40 text-custom-primary">02</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         "Rīgas satiksmes" lietotne ir mans galvenais palīgs sabiedriskā transporta izmantošanā. Tā sniedz precīzu informāciju par autobusu, trolejbusu un tramvaju kustību reāllaikā. Pateicoties šai lietotnei, es vienmēr zinu, kad pienāks mans transports un vai nav kavēšanās.
@@ -354,7 +388,7 @@
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Bolt kā alternatīvs risinājums
-<span class="hidden md:inline-block absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">03</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">03</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Kad sabiedriskais transports ir pārpildīts, kavējas vai vienkārši nav pieejams, es izmantoju Bolt. Šī lietotne ir kļuvusi par manu uzticamo glābēju steigas brīžos. Tā ļauj man ātri un ērti pasūtīt braucienu, redzot automašīnas atrašanās vietu, gaidīšanas laiku un aptuveno cenu.
@@ -368,7 +402,7 @@
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="relative group">
-                        <img src="https://images.unsplash.com/photo-1482029255085-35a4a48b7084?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                        <img src="car.jpeg" 
                              alt="Ride sharing service" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     </div>
@@ -377,20 +411,20 @@
     
 <section id="section4" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
-                    <img src="https://images.unsplash.com/photo-1534068731687-d70176c2e7d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    <img src="laiks2.jfif" 
                          alt="Weather forecast application" 
                          class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                 </div>
                 <div class="space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                        Laika prognozes aplikācijas
-<span class="hidden md:inline-block absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">04</span>
+                        Laika prognozes lietotne
+                        <span class="absolute -top-1 md:-top-2 -right-1 text-4xl md:text-6xl opacity-40 text-custom-primary">04</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
-                        Pirms iziešanas no mājām es vienmēr pārbaudu laika prognozi. Yr.no un AccuWeather ir kļuvušas par maniem uzticamākajiem palīgiem laika apstākļu novērtēšanā. Šīs lietotnes sniedz detalizētu informāciju ne tikai par temperatūru, bet arī par vēja ātrumu, nokrišņu iespējamību un citiem svarīgiem faktoriem.
+                        Pirms iziešanas no mājām es vienmēr pārbaudu laika prognozi. Weather ir kļuvis par manu uzticamāko palīgu laika apstākļu novērtēšanā. Šī lietotnes sniedz detalizētu informāciju ne tikai par temperatūru, bet arī par vēja ātrumu, nokrišņu iespējamību un citiem svarīgiem faktoriem.
                     </p>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
-                        Pateicoties precīzai laika prognozei, es varu pieņemt informētus lēmumus - vai ņemt lietussargu, vilkt mitrumizturīgus apavus vai izvēlēties velosipēdu. Tas ir īpaši svarīgi ziemas mēnešos, kad laika apstākļi var būt īpaši neparedzami. Šīs lietotnes palīdz man sagatavoties jebkādiem apstākļiem.
+                        Pateicoties precīzai laika prognozei, es varu pieņemt informētus lēmumus - vai ņemt lietussargu, vilkt mitrumizturīgus apavus vai izvēlēties velosipēdu. Tas ir īpaši svarīgi ziemas mēnešos, kad laika apstākļi var būt īpaši neparedzami. Šī lietotne palīdz man sagatavoties jebkādiem apstākļiem.
                     </p>
                     <div class="flex space-x-4 mt-4 md:mt-6">
                         <div class="w-2 bg-custom-accent rounded-full"></div>
@@ -402,8 +436,8 @@
 <section id="section5" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
-                        Laika plānošana ar Google Calendar
-<span class="hidden md:inline-block absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">05</span>
+                        Google Calendar
+                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">05</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Google Calendar ir mans galvenais organizatoriskais rīks. Šeit es ierakstu visas lekcijas, seminārus un svarīgākos notikumus. Lietotne ļauj man skaidri redzēt savu dienu un nedēļu grafiku, palīdzot efektīvi plānot laiku un izvairīties no pārsteigumiem.
@@ -417,7 +451,7 @@
                 </div>
                 <div class="order-1 md:order-2">
                     <div class="relative group">
-                        <img src="https://images.unsplash.com/photo-1617106400392-b53e003bfc35?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                        <img src="cal.png" 
                              alt="Ride sharing service" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     </div>
@@ -541,3 +575,4 @@
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
+
