@@ -70,9 +70,23 @@
             }
         }
         .nav-link.active {
-            color: #29646a;
-            font-weight: 700;
-        }
+    color: #29646a;
+    font-weight: 700;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #2c7da0, #61a5c2);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
         
         /* Mobile-specific styles */
         @media (max-width: 768px) {
@@ -111,7 +125,7 @@
             min-width: 44px;
         }
 
-         /* Light mode - Desktop */
+        /* Light mode - Desktop */
 #hero-header {
     background-image: url('light-desktop.png');
 }
@@ -134,9 +148,31 @@
         background-image: url('mobile-dark.png');
     }
 }
+.fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #hero-header {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    
+}
+
     </style>
 </head>
+
 <body class="bg-custom-background-light dark:bg-custom-background-dark text-custom-text-light dark:text-custom-text-dark mode-transition">
+    <!-- Scroll Indicator -->
+<!-- Scroll Indicator -->
+<div id="scroll-indicator" class="fixed top-0 left-0 h-1 bg-custom-primary dark:bg-custom-accent z-[9999] transition-all duration-200" style="width: 0%;"></div>
+
     <div x-data="{ 
         darkMode: false, 
         activeSection: 1,
@@ -167,19 +203,20 @@
 
                     <!-- Mobile and Desktop Right Side -->
                     <div class="flex items-center space-x-2">
-                        <!-- Theme Toggle -->
+                         <!-- Theme Toggle -->
                         <button 
-                            id="theme-toggle" 
-                            class="p-2 rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors touch-target"
-                            aria-label="Toggle theme"
-                        >
-                            <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                            </svg>
-                        </button>
+                        id="theme-toggle" 
+                        class="transition-colors touch-target"
+                        aria-label="Toggle theme"
+                    >
+                        <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                        </svg>
+                        <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                    </button>
+
 
                         <!-- Mobile Menu Button -->
                         <button 
@@ -239,6 +276,7 @@
 
         <!-- Hero Section -->
 <header id="hero-header" class="relative min-h-screen flex items-center justify-center text-center bg-cover bg-center mode-transition">
+    
             <div class="relative z-20 max-w-4xl mx-auto px-4 mobile-padding">
                 <h1 class="text-4xl md:text-6xl lg:text-7xl mobile-hero-title font-bold text-custom-primary dark:text-custom-accent mb-4 md:mb-6 animate-fade-in-up">
                     Digitālā pieredze ceļā no dzīvesvietas līdz LU
@@ -247,24 +285,25 @@
                     Patrīcija Vīns
                 </p>
             </div>
-            <a href="#section1" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-30">
-                <div class="scrolldown-animation">
-                    <svg class="w-8 h-8 md:w-10 md:h-10 text-custom-primary dark:text-custom-accent animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </div>
-            </a>
+          <a href="#section1" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-30 hidden md:block">
+    <div class="scrolldown-animation">
+        <svg class="w-8 h-8 md:w-10 md:h-10 text-custom-primary dark:text-custom-accent animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    </div>
+</a>
+
         </header>
 
         <!-- Main Content -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 space-y-12 md:space-y-24">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-32 md:space-y-40">
             
             <!-- Section 1 -->
-            <section id="section1" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="section1" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                        Maršruta plānošana ar Google Maps
-                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-10 text-custom-primary">01</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">01</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Katru dienu mans ceļš uz Latvijas Universitāti sākas ar Google Maps. Šis digitālais rīts ir kļuvis par neatņemamu manas ikdienas sastāvdaļu. Lietotne sniedz man visu nepieciešamo informāciju - no satiksmes intensitātes līdz precīziem sabiedriskā transporta maršrutiem un gaidīšanas laikiem.
@@ -284,23 +323,21 @@
                         <img src="https://images.unsplash.com/photo-1548345680-f5475ea5df84?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                              alt="Google Maps navigation" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
-                        <div class="absolute inset-0 bg-custom-primary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                     </div>
                 </div>
             </section>
     
             <!-- Section 2 -->
-            <section id="section2" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="section2" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
                     <img src="https://images.unsplash.com/photo-1617152683514-08cd8b3da14f?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                          alt="Rīgas satiksme transport" 
                          class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-custom-accent opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                 </div>
                 <div class="space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Rīgas satiksmes lietotne
-                        <span class="absolute -top-1 md:-top-2 -right-1 text-4xl md:text-6xl opacity-10 text-custom-primary">02</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 text-4xl md:text-6xl opacity-40 text-custom-primary">02</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         "Rīgas satiksmes" lietotne ir mans galvenais palīgs sabiedriskā transporta izmantošanā. Tā sniedz precīzu informāciju par autobusu, trolejbusu un tramvaju kustību reāllaikā. Pateicoties šai lietotnei, es vienmēr zinu, kad pienāks mans transports un vai nav kavēšanās.
@@ -318,11 +355,11 @@
             </section>
     
             <!-- Section 3 -->
-            <section id="section3" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="section3" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Bolt kā alternatīvs risinājums
-                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-10 text-custom-primary">03</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">03</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Kad sabiedriskais transports ir pārpildīts, kavējas vai vienkārši nav pieejams, es izmantoju Bolt. Šī lietotne ir kļuvusi par manu uzticamo glābēju steigas brīžos. Tā ļauj man ātri un ērti pasūtīt braucienu, redzot automašīnas atrašanās vietu, gaidīšanas laiku un aptuveno cenu.
@@ -339,22 +376,20 @@
                         <img src="https://images.unsplash.com/photo-1482029255085-35a4a48b7084?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                              alt="Ride sharing service" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
-                        <div class="absolute inset-0 bg-custom-secondary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                     </div>
                 </div>
             </section>
     
-              <section id="section4" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="section4" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
                     <img src="https://images.unsplash.com/photo-1534068731687-d70176c2e7d5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                          alt="Weather forecast application" 
                          class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
-                    <div class="absolute inset-0 bg-custom-accent opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                 </div>
                 <div class="space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Laika prognozes aplikācijas
-                        <span class="absolute -top-1 md:-top-2 -right-1 text-4xl md:text-6xl opacity-10 text-custom-primary">04</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 text-4xl md:text-6xl opacity-40 text-custom-primary">04</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Pirms iziešanas no mājām es vienmēr pārbaudu laika prognozi. Yr.no un AccuWeather ir kļuvušas par maniem uzticamākajiem palīgiem laika apstākļu novērtēšanā. Šīs lietotnes sniedz detalizētu informāciju ne tikai par temperatūru, bet arī par vēja ātrumu, nokrišņu iespējamību un citiem svarīgiem faktoriem.
@@ -369,11 +404,11 @@
             </section>
 
 
- <section id="section5" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="section5" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Laika plānošana ar Google Calendar
-                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-10 text-custom-primary">05</span>
+                        <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">05</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
                         Google Calendar ir mans galvenais organizatoriskais rīks. Šeit es ierakstu visas lekcijas, seminārus un svarīgākos notikumus. Lietotne ļauj man skaidri redzēt savu dienu un nedēļu grafiku, palīdzot efektīvi plānot laiku un izvairīties no pārsteigumiem.
@@ -390,7 +425,6 @@
                         <img src="https://images.unsplash.com/photo-1617106400392-b53e003bfc35?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                              alt="Ride sharing service" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
-                        <div class="absolute inset-0 bg-custom-secondary opacity-20 rounded-xl group-hover:opacity-0 transition-opacity"></div>
                     </div>
                 </div>
             </section>
@@ -399,7 +433,7 @@
         </main>
 
 <!-- Footer -->
-        <footer class="bg-custom-surface-light dark:bg-custom-surface-dark border-t border-stone-200 dark:border-stone-700 py-12 mt-24">
+<footer class="bg-custom-surface-light dark:bg-custom-surface-dark border-t border-stone-200 dark:border-stone-700 py-12 mt-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
                     <!-- Left Side - Title -->
@@ -479,6 +513,33 @@
         }
 
         window.addEventListener('scroll', activateNavLink);
+    });
+</script>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrollIndicator = document.getElementById('scroll-indicator');
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollIndicator.style.width = scrollPercent + '%';
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const faders = document.querySelectorAll('.fade-in');
+
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // trigger only once
+                }
+            });
+        }, { threshold: 0.2 });
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
     });
 </script>
 
