@@ -62,10 +62,14 @@
             scroll-behavior: smooth;
             -webkit-filter: none !important;
             filter: none !important;
+                background-color: #ffffff !important;
+
         }
          html {
             -webkit-filter: none !important;
             filter: none !important;
+                background-color: #ffffff !important;
+
         }
         .mode-transition {
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -144,7 +148,12 @@
                 margin-bottom: 3rem;
             }
         }
-        
+        @media (max-width: 768px) {
+    nav {
+        backdrop-filter: none !important;
+        background-color: #ffffff !important;
+    }
+}
         /* Touch-friendly buttons */
         .touch-target {
             min-height: 44px;
@@ -153,6 +162,8 @@
 
         /* Light mode - Desktop */
         #hero-header {
+                background-color: #ffffff !important;
+
             background-image: url('light-desktop.png');
             background-size: cover;
             background-position: center;
