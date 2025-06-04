@@ -225,12 +225,12 @@
                     
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="#section1" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Plānošana</a>
-                        <a href="#section2" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Transports</a>
-                        <a href="#section3" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Alternatīvas</a>
-                        <a href="#section4" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Laiks</a>
-                        <a href="#section5" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Organizācija</a>
-                    </div>
+    <a href="#marsruts" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Maršruts</a>
+    <a href="#transports" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Transports</a>
+    <a href="#alternativas" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Alternatīvas</a>
+    <a href="#laiks" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Laiks</a>
+    <a href="#kalendars" class="nav-link text-custom-text-light dark:text-custom-text-dark transition-colors duration-300 hover:text-custom-primary hover:scale-105 transform">Kalendārs</a>
+</div>
 
                     <!-- Mobile and Desktop Right Side -->
                     <div class="flex items-center space-x-2">
@@ -275,32 +275,13 @@
                      x-transition:leave-end="opacity-0 transform -translate-y-2"
                      class="md:hidden border-t border-stone-200 dark:border-stone-700 bg-white/95 dark:bg-custom-background-dark/95 backdrop-blur-lg">
                     <div class="px-4 py-6 space-y-4">
-                        <a href="#section1" 
-                           @click="mobileMenuOpen = false"
-                           class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">
-                           Plānošana
-                        </a>
-                        <a href="#section2" 
-                           @click="mobileMenuOpen = false"
-                           class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">
-                           Transports
-                        </a>
-                        <a href="#section3" 
-                           @click="mobileMenuOpen = false"
-                           class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">
-                           Alternatīvas
-                        </a>
-                        <a href="#section4" 
-                           @click="mobileMenuOpen = false"
-                           class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">
-                           Laiks
-                        </a>
-                        <a href="#section5" 
-                           @click="mobileMenuOpen = false"
-                           class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">
-                           Organizācija
-                        </a>
-                    </div>
+    <a href="#marsruts" @click="mobileMenuOpen = false" class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">Maršruts</a>
+    <a href="#transports" @click="mobileMenuOpen = false" class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">Transports</a>
+    <a href="#alternativas" @click="mobileMenuOpen = false" class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">Alternatīvas</a>
+    <a href="#laiks" @click="mobileMenuOpen = false" class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">Laiks</a>
+    <a href="#kalendars" @click="mobileMenuOpen = false" class="nav-link block text-lg font-medium text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary transition-colors py-3 touch-target">Kalendārs</a>
+</div>
+
                 </div>
             </div>
         </nav>
@@ -316,7 +297,7 @@
                     Patrīcija Vīns
                 </p>
             </div>
-          <a href="#section1" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-30 hidden md:block">
+          <a href="#marsruts" class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-30 hidden md:block">
     <div class="scrolldown-animation">
         <svg class="w-8 h-8 md:w-10 md:h-10 text-custom-primary dark:text-custom-accent animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -330,17 +311,17 @@
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-32 md:space-y-40">
             
             <!-- Section 1 -->
-<section id="section1" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="marsruts" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                        Google Maps
                         <span class="absolute -top-1 md:-top-2 -right-1 md:-right-2 text-4xl md:text-6xl opacity-40 text-custom-primary">01</span>
                     </h2>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
-                        Katru dienu mans ceļš uz Latvijas Universitāti sākas ar Google Maps. Šis digitālais rīts ir kļuvis par neatņemamu manas ikdienas sastāvdaļu. Lietotne sniedz man visu nepieciešamo informāciju - no satiksmes intensitātes līdz precīziem sabiedriskā transporta maršrutiem un gaidīšanas laikiem.
+                        Katru dienu mans ceļš uz Latvijas Universitāti sākas ar Google Maps. Šis digitālais rīks ir kļuvis par neatņemamu manas ikdienas sastāvdaļu. Lietotne sniedz man visu nepieciešamo informāciju - no satiksmes intensitātes līdz precīziem sabiedriskā transporta maršrutiem un gaidīšanas laikiem.
                     </p>
                     <p class="text-custom-text-light dark:text-custom-text-dark text-base md:text-lg mobile-text leading-relaxed mode-transition">
-                        Pateicoties reāllaika datiem, es varu izvēlēties optimālāko maršrutu un transporta veidu. Ja redzu, ka autobuss kavēsies vai būs pārpildīts, izmantoju alternatīvas iespējas - piemēram, velosipēdu vai Bolt taksi. Tas ne tikai ietaupa manu laiku, bet arī dod elastību ikdienas plānošanā.
+                        Pateicoties reāllaika datiem, es varu izvēlēties optimālāko maršrutu un transporta veidu. Ja redzu, ka autobuss kavēsies vai būs pārpildīts, izmantoju alternatīvas iespējas - piemēram, velosipēdu vai Bolt. Tas ne tikai ietaupa manu laiku, bet arī dod elastību ikdienas plānošanā.
                     </p>
                     <div class="flex space-x-4">
                         <div class="w-2 bg-custom-primary rounded-full"></div>
@@ -359,7 +340,7 @@
             </section>
     
             <!-- Section 2 -->
-<section id="section2" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="transports" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
                     <img src="rs.jfif" 
                          alt="Rīgas satiksmes transports" 
@@ -386,7 +367,7 @@
             </section>
     
             <!-- Section 3 -->
-<section id="section3" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="alternativas" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Bolt kā alternatīvs risinājums
@@ -411,7 +392,7 @@
                 </div>
             </section>
     
-<section id="section4" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="laiks" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
                     <img src="laiks2.jfif" 
                          alt="Debesis" 
@@ -435,7 +416,7 @@
             </section>
 
 
-<section id="section5" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
+<section id="kalendars" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="order-2 md:order-1 space-y-4 md:space-y-6">
                     <h2 class="text-3xl md:text-4xl mobile-section-title font-bold mb-4 md:mb-6 text-custom-primary dark:text-custom-accent mode-transition relative">
                         Google Calendar
@@ -479,22 +460,13 @@
 
                     <!-- Center - Navigation Links -->
                     <div class="flex flex-wrap justify-center gap-6 text-sm">
-                        <a href="#section1" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
-                            Plānošana
-                        </a>
-                        <a href="#section2" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
-                            Transports
-                        </a>
-                        <a href="#section3" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
-                            Alternatīvas
-                        </a>
-                        <a href="#section4" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
-                            Laiks
-                        </a>
-                        <a href="#section5" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">
-                            Organizācija
-                        </a>
-                    </div>
+    <a href="#marsruts" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">Maršruts</a>
+    <a href="#transports" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">Transports</a>
+    <a href="#alternativas" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">Alternatīvas</a>
+    <a href="#laiks" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">Laiks</a>
+    <a href="#kalendars" class="text-custom-text-light dark:text-custom-text-dark hover:text-custom-primary dark:hover:text-custom-accent transition-colors">Kalendārs</a>
+</div>
+
 
                     <!-- Right Side - Copyright -->
                     <div class="text-custom-text-light dark:text-custom-text-dark text-sm opacity-70">
