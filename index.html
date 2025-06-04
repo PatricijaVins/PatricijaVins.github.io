@@ -202,14 +202,16 @@
 <!-- Scroll Indicator -->
 <div id="scroll-indicator" class="fixed top-0 left-0 h-1 bg-custom-primary dark:bg-custom-accent z-[9999] transition-all duration-200" style="width: 0%;"></div>
 
-    <div x-data="{ 
-        darkMode: false, 
-        activeSection: 1,
-        mobileMenuOpen: false 
-    }" x-init="
-        darkMode = localStorage.getItem('darkMode') === 'true';
-        document.documentElement.classList.toggle('dark', darkMode);
-    ">
+<div x-data="{ 
+    darkMode: false, 
+    activeSection: 1,
+    mobileMenuOpen: false 
+}" x-init="
+    const theme = localStorage.getItem('theme') || 'light';
+    darkMode = (theme === 'dark');
+    document.documentElement.classList.toggle('dark', darkMode);
+">
+
         
         <!-- Navigation -->
         <nav class="sticky top-0 z-50 glass-effect transition-all duration-300 backdrop-blur-md bg-white/70 dark:bg-custom-background-dark/70 border-b border-stone-200 dark:border-stone-700">
@@ -350,7 +352,7 @@
                 <div class="order-1 md:order-2">
                     <div class="relative group">
                         <img src="lu.jfif" 
-                             alt="Google Maps navigation" 
+                             alt="Latvijas Universitātes ēka" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     </div>
                 </div>
@@ -360,7 +362,7 @@
 <section id="section2" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
                     <img src="rs.jfif" 
-                         alt="Rīgas satiksme transport" 
+                         alt="Rīgas satiksmes transports" 
                          class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                 </div>
                 <div class="space-y-4 md:space-y-6">
@@ -403,7 +405,7 @@
                 <div class="order-1 md:order-2">
                     <div class="relative group">
                         <img src="car.jpeg" 
-                             alt="Ride sharing service" 
+                             alt="Attēls ar mašīnu" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     </div>
                 </div>
@@ -412,7 +414,7 @@
 <section id="section4" class="fade-in grid md:grid-cols-2 gap-8 md:gap-12 items-center scroll-mt-20 mobile-section-spacing">
                 <div class="relative group">
                     <img src="laiks2.jfif" 
-                         alt="Weather forecast application" 
+                         alt="Debesis" 
                          class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                 </div>
                 <div class="space-y-4 md:space-y-6">
@@ -452,7 +454,7 @@
                 <div class="order-1 md:order-2">
                     <div class="relative group">
                         <img src="cal.png" 
-                             alt="Ride sharing service" 
+                             alt="Ekrānuzņēmums no Google Calendar" 
                              class="w-full h-64 md:h-96 mobile-image object-cover rounded-xl shadow-lg transform transition-transform group-hover:scale-105">
                     </div>
                 </div>
